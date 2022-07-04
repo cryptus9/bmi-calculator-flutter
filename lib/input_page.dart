@@ -1,7 +1,9 @@
+import 'package:bmi_calculator/NumericValueStepperCard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'GenderWidget.dart';
+import 'NumericValueSliderCard.dart';
 import 'ReusableCard.dart';
 import 'constants.dart';
 
@@ -18,6 +20,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   EGender selectedGender = EGender.MALE;
   int currentHeight = 180;
+  int weight = 80;
+  int age = 30;
 
   @override
   Widget build(BuildContext context) {
@@ -67,46 +71,56 @@ class _InputPageState extends State<InputPage> {
         Expanded(
           child: Row(children: [
             ReusableCard(
-              color: kActiveCardColor,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('HEIGHT'),
-                  Row(
-                    textBaseline: TextBaseline.alphabetic,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    children: [
-                      Text(
-                        currentHeight.toString(),
-                        style: kTextStyleNumber,
-                      ),
-                      Text(
-                        'cm',
-                        style: kTextStyleText,
-                      ),
-                    ],
-                  ),
-                  Slider(
-                    activeColor: kBottomContainerColor,
-                    value: currentHeight.toDouble(),
-                    min: 120.0,
-                    max: 220.0,
-                    onChanged: (double newValue) {
-                      setState(() {
-                        currentHeight = newValue.round();
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
+                color: kActiveCardColor,
+                cardChild: NumericValueSliderCard(
+                  currentValue: currentHeight,
+                  title: 'HEIGHT',
+                  unit: 'CM',
+                  onChange: (double newValue) {
+                    setState(() {
+                      currentHeight = newValue.round();
+                    });
+                  },
+                )),
           ]),
         ),
         Expanded(
           child: Row(children: [
-            ReusableCard(color: kActiveCardColor),
-            ReusableCard(color: kActiveCardColor),
+            ReusableCard(
+              color: kActiveCardColor,
+              cardChild: NumericValueStepperCard(
+                title: 'WEIGHT',
+                unit: 'KG',
+                currentValue: weight,
+                addFn: () {
+                  setState(() {
+                    weight++;
+                  });
+                },
+                subtractFn: () {
+                  setState(() {
+                    weight--;
+                  });
+                },
+              ),
+            ),
+            ReusableCard(
+              color: kActiveCardColor,
+              cardChild: NumericValueStepperCard(
+                title: 'AGE',
+                currentValue: age,
+                addFn: () {
+                  setState(() {
+                    age++;
+                  });
+                },
+                subtractFn: () {
+                  setState(() {
+                    age--;
+                  });
+                },
+              ),
+            ),
           ]),
         ),
         Container(
