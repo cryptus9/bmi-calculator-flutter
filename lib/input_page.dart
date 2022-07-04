@@ -128,6 +128,15 @@ class _InputPageState extends State<InputPage> {
           height: kBottomContainerHeight,
           width: double.infinity,
           color: kBottomContainerColor,
+          child: TextButton(
+            child: Text(
+              'CALCULATE',
+              style: kTextStyleButton,
+            ),
+            onPressed: () {
+
+            },
+          ),
         ),
       ]),
     );
