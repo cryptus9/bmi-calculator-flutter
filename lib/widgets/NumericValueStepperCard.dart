@@ -1,4 +1,4 @@
-import 'package:bmi_calculator/NumericValueCard.dart';
+import 'package:bmi_calculator/widgets/NumericValueCard.dart';
 import 'package:flutter/material.dart';
 
 import 'RoundedIconButton.dart';
@@ -7,8 +7,8 @@ class NumericValueStepperCard extends StatelessWidget {
   final int currentValue;
   final String title;
   final String unit;
-  final Function addFn;
-  final Function subtractFn;
+  final Function() addFn;
+  final Function() subtractFn;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,9 @@ class NumericValueStepperCard extends StatelessWidget {
 
   NumericValueStepperCard({
     this.unit = '',
-    @required this.currentValue,
-    @required this.title,
-    @required this.addFn,
-    @required this.subtractFn,
+    required this.currentValue,
+    required this.title,
+    required this.addFn,
+    required this.subtractFn,
   });
 }

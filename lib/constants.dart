@@ -10,3 +10,5 @@ const kTextStyleTextActive = TextStyle(
     fontSize: 18.0, color: Color(0xFF8D8E98), fontWeight: FontWeight.w900);
 const kTextStyleNumber = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
 const kTextStyleButton = TextStyle(fontSize: 20.0, color: Colors.white);
+const kTextStyleResult = TextStyle(fontSize: 20.0, color: Colors.green);
+const kTextStyleSummary = TextStyle(fontSize: 20.0, color: Colors.white);

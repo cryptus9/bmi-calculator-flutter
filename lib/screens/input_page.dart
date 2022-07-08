@@ -1,11 +1,13 @@
-import 'package:bmi_calculator/NumericValueStepperCard.dart';
+import 'package:bmi_calculator/widgets/NumericValueStepperCard.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'GenderWidget.dart';
-import 'NumericValueSliderCard.dart';
-import 'ReusableCard.dart';
-import 'constants.dart';
+import '../widgets/BottomActionButton.dart';
+import '../widgets/GenderWidget.dart';
+import '../widgets/NumericValueSliderCard.dart';
+import '../widgets/ReusableCard.dart';
+import '../constants.dart';
 
 enum EGender {
   MALE,
@@ -123,21 +125,14 @@ class _InputPageState extends State<InputPage> {
             ),
           ]),
         ),
-        Container(
-          margin: EdgeInsets.only(top: 10.0),
-          height: kBottomContainerHeight,
-          width: double.infinity,
-          color: kBottomContainerColor,
-          child: TextButton(
-            child: Text(
-              'CALCULATE',
-              style: kTextStyleButton,
+        BottomActionButton('CALCULATE', () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ResultsPage(),
             ),
-            onPressed: () {
-
-            },
-          ),
-        ),
+          );
+        }),
       ]),
     );
   }

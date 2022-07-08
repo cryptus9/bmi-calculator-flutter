@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'NumericValueCard.dart';
-import 'constants.dart';
-
+import '../constants.dart';
 
 class NumericValueSliderCard extends StatelessWidget {
   NumericValueSliderCard(
-      {@required this.currentValue,
-        @required this.title,
-        @required this.unit,
-        @required this.onChange});
+      {required this.currentValue,
+      required this.title,
+      required this.unit,
+      required this.onChange});
 
   final int currentValue;
   final String title;
@@ -21,8 +20,7 @@ class NumericValueSliderCard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        NumericValueCard(
-            title: title, unit: unit, currentValue: currentValue),
+        NumericValueCard(title: title, unit: unit, currentValue: currentValue),
         Slider(
           activeColor: kBottomContainerColor,
           value: currentValue.toDouble(),

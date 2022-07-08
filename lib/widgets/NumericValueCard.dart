@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class NumericValueCard extends StatelessWidget {
   NumericValueCard(
-      {@required this.title,
-      @required this.unit,
-      @required this.currentValue});
+      {required this.title, required this.unit, required this.currentValue});
 
   final String title;
   final String unit;

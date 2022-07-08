@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.iconData, @required this.onTap});
+  RoundIconButton({required this.iconData, required this.onTap});
 
   final IconData iconData;
-  final Function onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
