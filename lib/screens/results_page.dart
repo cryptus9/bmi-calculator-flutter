@@ -1,9 +1,18 @@
+import 'package:bmi_calculator/services/bmi-calculator-service.dart';
 import 'package:bmi_calculator/widgets/BottomActionButton.dart';
 import 'package:bmi_calculator/widgets/ReusableCard.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({
+    required this.bmiState,
+    required this.bmi,
+  });
+
+  final BmiStates bmiState;
+  final String bmi;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,15 +28,15 @@ class ResultsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'NORMAL',
+                  bmiState.value.toUpperCase(),
                   style: kTextStyleResult,
                 ),
                 Text(
-                  '19.2',
+                  bmi,
                   style: kTextStyleNumber,
                 ),
                 Text(
-                  'You have a normal bodyy weight. Good job!',
+                  bmiState.feedback,
                   textAlign: TextAlign.center,
                   style: kTextStyleSummary,
                 ),

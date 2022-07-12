@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/services/bmi-calculator-service.dart';
 import 'package:bmi_calculator/widgets/NumericValueStepperCard.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
@@ -126,10 +127,15 @@ class _InputPageState extends State<InputPage> {
           ]),
         ),
         BottomActionButton('CALCULATE', () {
+          BmiCalculatorService calculatorService =
+              BmiCalculatorService(height: currentHeight, weight: weight);
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ResultsPage(),
+              builder: (context) => ResultsPage(
+                bmi: calculatorService.calculateBmi(),
+                bmiState: calculatorService.getFeedback(),
+              ),
             ),
           );
         }),
