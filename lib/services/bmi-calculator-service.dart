@@ -1,33 +1,47 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
-
 class BmiCalculatorService {
   BmiCalculatorService({
-    required this.heigth,
+    required this.height,
     required this.weight,
   });
 
   final int height;
   final int weight;
 
-  double _bmi;
+  double _bmi = 0;
 
   String calculateBmi() {
-    _bmi = weight / pow(heigth / 100, 2);
+    _bmi = weight / pow(height / 100, 2);
     return _bmi.toStringAsFixed(1);
   }
 
-  String getResult() {}
+  BmiStates getFeedback() {
+    if (_bmi >= 25) {
+      return BmiStates.OVERWEIGHT;
+    } else if (_bmi > 18.5) {
+      return BmiStates.NORMAL;
+    }
+    return BmiStates.UNDERWEIGHT;
+  }
 }
 
-enum BMI_STATES {
-  UNDERWEIGHT(18.5, '', ''),
-  NORMAL(18.5, '', ''),
-  OVERWEIGHT(18.5, '', '');
+enum BmiStates {
+  UNDERWEIGHT(
+    'Underweight',
+    'You have a lower BMI than normal. You can eat a bit more.',
+  ),
+  NORMAL(
+    'Normal',
+    'You have a normal body weight. Good Job!',
+  ),
+  OVERWEIGHT(
+    'Overweight',
+    'You have a higher BMI than normal. You can exercise more.',
+  );
 
-  const BMI_STATES(this.upperLimit, this.value, this.feedback);
-  final int upperLimit;
+  const BmiStates(this.value, this.feedback);
+
   final String value;
   final String feedback;
 }
